@@ -9,9 +9,9 @@ public class Main {
 
 		// convert to grey scale
 		Filter filter = new Filter(picture);
-//		filter.greyScaleFilter();
-//		filter.sepiaFilter();
-//		filter.revertColorFilter();
+		//picture = filter.greyScaleFilter();
+		//picture = filter.sepiaFilter();
+		picture = filter.revertColorFilter();
 		picture.show();
 		
 	}

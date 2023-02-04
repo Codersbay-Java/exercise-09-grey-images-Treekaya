@@ -18,9 +18,19 @@ public class Filter {
 	 * @return converted picture
 	 */
 	public Picture greyScaleFilter() {
-		/*
-			your code here
-		*/
+
+		for (int height = 0; height < picture.width(); height++){
+			for(int width = 0; width < picture.width(); width++){
+
+				Color color = picture.get(height, width);
+				//System.out.println(color);
+				float greyScale = (color.getBlue() + color.getGreen() + color.getBlue()) / 3;
+				float greyScalePercent = greyScale / 255;
+				color = new Color(greyScalePercent, greyScalePercent, greyScalePercent);
+				picture.set(height, width, color);
+			}
+		}
+
 		return picture;
 	}
 
@@ -31,9 +41,21 @@ public class Filter {
 	 * @return converted picture
 	 */
 	public Picture revertColorFilter() {
-		/*
-			your code here
-		*/
+
+		for (int height = 0; height < picture.width(); height++){
+			for(int width = 0; width < picture.width(); width++){
+
+				Color color = picture.get(height, width);
+
+				float red = (color.getRed() - 255) * -1;
+				float green = (color.getGreen() - 255) * -1;
+				float blue = (color.getBlue() - 255) * -1;
+
+				color = new Color(Math.min(red, 255) / 255, Math.min(green, 255) / 255, Math.min(blue, 255) / 255);
+				picture.set(height, width, color);
+			}
+		}
+
 		return picture;
 	}
 
@@ -53,9 +75,23 @@ public class Filter {
 	//@formatter:on
 
 	public Picture sepiaFilter() {
-		/*
-			your code here
-		*/
+
+
+		for (int height = 0; height < picture.width(); height++){
+			for(int width = 0; width < picture.width(); width++){
+
+				Color color = picture.get(height, width);
+
+				float red = (float)((color.getRed()  * 0.393) + (color.getGreen() * 0.769) + (color.getBlue()* 0.189));
+				float green = (float)((color.getRed() * 0.349) + (color.getGreen() * 0.686) + (color.getBlue() * 0.168));
+				float blue = (float)((color.getRed() * 0.292) + (color.getGreen() * 0.534) + (color.getBlue() * 0.131));
+
+				color = new Color(Math.min(red, 255) / 255, Math.min(green, 255) / 255, Math.min(blue, 255) / 255);
+				picture.set(height, width, color);
+			}
+		}
+
+
 		return picture;
 	}
 }
